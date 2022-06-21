@@ -31,6 +31,18 @@ public final class App {
 
         var serverOptions = new Options().withPort(port);
 
+        var loop = new EventLoop(serverOptions, (request, consumer) -> {
+            try {
+                var response = handleRequest(pepData, request);
+                consumer.accept(response);
+            } catch (Exception __) {
+                consumer.accept(new Response(500, "ERR", List.of(), "Unexpected Error".getBytes(StandardCharsets.UTF_8)));
+            }
+        });
+        loop.start();
+
+    }
+
     // Gets the query params after the /api/pep?
     private static Map<String, String> parseQueryParams(String uri) {
         var splitUri = uri.split("\\?");
@@ -83,3 +95,4 @@ public final class App {
         }
 
     }
+}
