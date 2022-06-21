@@ -3,7 +3,6 @@ package kyc;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import java.util.List;
-import java.util.Locale;
 
 public final class PepDataSearcher {
     private PepDataSearcher() {}

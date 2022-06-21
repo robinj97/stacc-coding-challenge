@@ -1,18 +1,12 @@
 package kyc;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
 import jakarta.json.Json;
 import org.microhttp.*;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,7 +29,8 @@ public final class App {
             try {
                 var response = handleRequest(pepData, request);
                 consumer.accept(response);
-            } catch (Exception __) {
+            } catch (Exception e) {
+                e.printStackTrace();
                 consumer.accept(new Response(500, "ERR", List.of(), "Unexpected Error".getBytes(StandardCharsets.UTF_8)));
             }
         });
@@ -93,6 +88,5 @@ public final class App {
                            .toString()
                            .getBytes(StandardCharsets.UTF_8));
         }
-
     }
 }

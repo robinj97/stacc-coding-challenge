@@ -26,31 +26,22 @@ public record PepDataRow(
         String lastSeen,
         String firstSeen
 ) {
-
-    private static String nullIfEmpty(String s) {
-        if ("".equals(s)) {
-            return null;
-        }
-        else {
-            return s;
-        }
-    }
     public static PepDataRow fromCSVRow(String[] row) {
         return new PepDataRow(
-                nullIfEmpty(row[0]),
-                nullIfEmpty(row[1]),
-                nullIfEmpty(row[2]),
-                nullIfEmpty(row[3]),
-                nullIfEmpty(row[4]),
-                nullIfEmpty(row[5]),
-                nullIfEmpty(row[6]),
-                nullIfEmpty(row[7]),
-                nullIfEmpty(row[8]),
-                nullIfEmpty(row[9]),
-                nullIfEmpty(row[10]),
+                row[0],
+                row[1],
+                row[2],
+                row[3],
+                row[4],
+                row[5],
+                row[6],
+                row[7],
+                row[8],
+                row[9],
+                row[10],
                 List.of(row[11].split(";")),
-                nullIfEmpty(row[12]),
-                nullIfEmpty(row[13])
+                row[12],
+                row[13]
         );
     }
 
