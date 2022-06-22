@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API frontend</title>
+</head>
+<body>
+    <label for="name">Name</label>
+    <input id="name"/>
+
+    <br>
+    <label for="dataset">Dataset</label>
+    <input id="dataset"/>
+    <br>
+    <button onclick="search()">Search</button>
+    <br>
+
+    <div>
+        <pre id="results"></pre>
+    </div>
+
+<script type="text/javascript">
+    async function search() {
+        const params = {};
+
+        const nameInput = document.getElementById("name");
+        if ("" !== nameInput.value) {
+            params["name"] = nameInput.value;
+        }
+
+        const dataSetInput = document.getElementById("dataset");
+        if ("" !== dataSetInput.value) {
+            params["dataset"] = dataSetInput.value;
+        }
+
+        const url = "/api/pep?" + new URLSearchParams(params);
+        const response = await (await fetch(url)).json();
+
+        document.getElementById("results").textContent = JSON.stringify(response, null, 2);
+    }
+</script>
+</body>
+</html>
