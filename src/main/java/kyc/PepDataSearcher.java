@@ -1,7 +1,4 @@
 package kyc;
-
-import org.apache.commons.text.similarity.LevenshteinDistance;
-
 import java.util.List;
 
 /**
