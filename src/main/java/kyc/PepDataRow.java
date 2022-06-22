@@ -10,6 +10,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class serves as a container for the data from the CSV file
+ */
 public record PepDataRow(
         String id,
         String schema,
@@ -26,6 +29,11 @@ public record PepDataRow(
         String lastSeen,
         String firstSeen
 ) {
+    /**
+     * Creates a single row from a csv line
+     * @param row an array of values
+     * @return a PepDataRow class with values mapped to fields
+     */
     public static PepDataRow fromCSVRow(String[] row) {
         return new PepDataRow(
                 row[0],
@@ -45,13 +53,19 @@ public record PepDataRow(
         );
     }
 
+    /**
+     * Takes a file and creates an organized list with values mapped to fields
+     * @param fileName name of the csv file
+     * @return List of organized rows and values
+     */
     public static List<PepDataRow> loadFromResource(String fileName) {
         List<PepDataRow> pepData;
+        // Load up file, this will handle just the file but also since its bundled it will handle if built from jar
         try (var data = PepDataRow.class.getClassLoader().getResourceAsStream(fileName)) {
             var reader = new CSVReader(new InputStreamReader(Objects.requireNonNull(data)));
             pepData = reader.readAll().stream()
                     .skip(1)
-                    .map(PepDataRow::fromCSVRow)
+                    .map(row -> PepDataRow.fromCSVRow(row))
                     .toList();
         } catch (IOException | CsvException e) {
             throw new RuntimeException(e);
@@ -59,6 +73,10 @@ public record PepDataRow(
         return pepData;
     }
 
+    /**
+     * This method turns record into a JSON object
+     * @return JSON object of a PepDataRow
+     */
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("id", this.id)
