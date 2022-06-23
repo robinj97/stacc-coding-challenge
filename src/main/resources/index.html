@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>API frontend</title>
 </head>
 <body>
-    <label for="name">Name</label>
-    <input id="name"/>
+    <div>
+        <h1>Fill in fields below as you wish to search</h1>
+        <p>You can choose to fill in just one or both fields for more specific searches</p>
+        <p>Everything is case <strong>insensitive</strong></p>
+    </div>
 
+    <div>
+        <label for="name">Name</label>
+        <input id="name"/>
+        <br>
+        <label for="dataset">Dataset</label>
+        <input id="dataset"/>
+    </div>
     <br>
-    <label for="dataset">Dataset</label>
-    <input id="dataset"/>
-    <br>
-    <button onclick="search()">Search</button>
+    <div>
+        <button onclick="search()">Search</button>
+    </div>
     <br>
 
     <div>
