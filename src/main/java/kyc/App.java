@@ -19,12 +19,7 @@ public final class App {
         List<PepDataRow> pepData = PepDataRow.loadFromResource("pep.csv");
 
         int port = 8081;
-        try {
-            port = Integer.parseInt(System.getenv("PORT"));
-        } catch (NumberFormatException ignored) {
-            System.out.println("No port found, running on port 8081");
-        }
-
+        System.out.println("Starting server on port " + port);
         var serverOptions = new Options().withPort(port);
 
         var loop = new EventLoop(serverOptions, (request, consumer) -> {
@@ -37,6 +32,7 @@ public final class App {
             }
         });
         loop.start();
+
 
     }
 
@@ -60,9 +56,9 @@ public final class App {
     }
 
     /**
-     * Handles requests sent to the api wether it is directly from the API or from the front-end GUI
+     * Handles requests sent to the api whether it is directly from the API or from the front-end GUI
      * @param pepData data which the request pertains to
-     * @param request request recieved
+     * @param request request received
      * @return response appropriate to who it was that requested a response
      */
     private static Response handleRequest(List<PepDataRow> pepData, Request request) {
