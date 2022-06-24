@@ -6,18 +6,13 @@
 >
 
 ## Hvordan kjøre prosjektet
-> mvn clean install
+> Man kan søke via simpel front end til API'et mitt på:
 > 
-> Jeg er usikker på hvordan du kjører en Maven applikasjon via command line.
->Gjerne åpne prosjektet i IntelliJ eller Eclipse. Det vil komme opp en Play knapp i App.java klassen.
-> 
-> Api'et har en simpel frontend UI som kan hentes fra 
-> 
-> localhost:8081
+> https://serene-castle-66375.herokuapp.com/
 > 
 > Du kan også direkte i browseren bruke API'et via URL
 > 
-> localhost:8081/api/pep?
+> /api/pep?
 > 
 > Etter ? kan man søke via "name=" & "dataset="
 
@@ -28,6 +23,4 @@
 > 
 > Det er veldig basic siden jeg ikke har så veldig mye CSS kunnskap.
 > 
-> 2. En av utfordringene som jeg ikke greide å løse var hosting online siden det er en maven applikasjon. 
-> Jeg har mer kunnskap med deployment av Node.JS applikasjoner.
->
+> 
