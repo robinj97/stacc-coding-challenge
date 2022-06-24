@@ -19,8 +19,16 @@ public final class App {
         List<PepDataRow> pepData = PepDataRow.loadFromResource("pep.csv");
 
         int port = 8081;
+        try {
+            port = Integer.parseInt(System.getenv("PORT"));
+        } catch (NumberFormatException ignored) {
+            System.out.println("Bad port");
+        }
+
         System.out.println("Starting server on port " + port);
-        var serverOptions = new Options().withPort(port);
+        var serverOptions = new Options()
+                .withHost("0.0.0.0")
+                .withPort(port);
 
         var loop = new EventLoop(serverOptions, (request, consumer) -> {
             try {
