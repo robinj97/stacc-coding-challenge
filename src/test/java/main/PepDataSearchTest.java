@@ -23,7 +23,7 @@ public class PepDataSearchTest {
                 "1997-11-16","Norway","NA","a","none","none",
                 " ",List.of("NO","AXE"),"never","year 1");
         PepDataRow pep4 = new PepDataRow("1010","Person","robin jain","RJ",
-                "1997-11-16","Norway","NA","a","none","none",
+                "1997-11-17","Norway","NA","a","none","none",
                 " ",List.of("NO","Stacc"),"never","year 1");
         return List.of(pep1,pep2,pep3,pep4);
 
@@ -79,7 +79,19 @@ public class PepDataSearchTest {
         String id2 = results.get(1).id();
         Assert.assertEquals("234",id1);
         Assert.assertEquals("1010",id2);
+    }
 
+    /**
+     * Test to make sure searching by BirthDate works
+     */
+    @Test
+    public void searchByBirthDateTest() {
+        String birthDate = "1997-11-17";
+        results = PepDataSearcher.searchByBirthDate(testData,birthDate);
+        Assert.assertEquals(1,results.size());
+
+        String name = results.get(0).name();
+        Assert.assertEquals("robin jain",name);
     }
 
 
