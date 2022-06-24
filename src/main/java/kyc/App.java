@@ -86,7 +86,14 @@ public final class App {
             if (queryParams.containsKey("dataset")) {
                 pepData = PepDataSearcher.searchByDataset(pepData, queryParams.get("dataset"));
             }
-            finalJson = getJsonObject(pepData);
+            if (queryParams.containsKey("birthDate")) {
+                pepData = PepDataSearcher.searchByBirthDate(pepData, queryParams.get("birthDate"));
+            }
+            int page = 1;
+            if (queryParams.containsKey("page")) {
+                page = Math.abs(Integer.parseInt(queryParams.get("page")));
+            }
+            finalJson = getJsonObject(page, pepData);
             return new Response(
                     200,
                     "OK",
@@ -120,12 +127,18 @@ public final class App {
      * @param pepData data to be turned into JSON
      * @return JSON object of data
      */
-    private static JsonObject getJsonObject(List<PepDataRow> pepData) {
-        var jsonData = Json.createArrayBuilder(pepData.stream().map(row -> row.toJson()).toList())
+    private static JsonObject getJsonObject(int page, List<PepDataRow> pepData) {
+        int perPage = 20;
+        var jsonData = Json.createArrayBuilder(pepData.stream()
+                .skip((page - 1) * perPage)
+                .limit(perPage)
+                .map(row -> row.toJson()).toList())
                 .build();
 
         var finalJson = Json.createObjectBuilder()
                 .add("numberOfHits", pepData.size())
+                .add("page", page)
+                .add("totalPages", Math.ceil((double) pepData.size() / perPage))
                 .add("data", jsonData)
                 .build();
         return finalJson;
