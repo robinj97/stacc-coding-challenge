@@ -40,8 +40,6 @@ public final class App {
             }
         });
         loop.start();
-
-
     }
 
     /**

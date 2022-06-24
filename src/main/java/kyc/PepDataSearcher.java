@@ -33,4 +33,7 @@ public final class PepDataSearcher {
                 )
                 .toList();
     }
+    public static List<PepDataRow> searchByBirthDate(List<PepDataRow> rows, String birthDate) {
+        return rows.stream().filter(row -> row.birthDate().equals(birthDate)).toList();
+    }
 }

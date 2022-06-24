@@ -18,6 +18,9 @@
         <label for="dataset">Dataset</label>
         <input id="dataset"/>
         <br>
+        <label for="birthDate">Birthdate</label>
+        <input id="birthDate" type="date"/>
+        <br>
         <label for="page">Page</label>
         <input id="page"/>
     </div>
@@ -43,6 +46,14 @@
         const dataSetInput = document.getElementById("dataset");
         if ("" !== dataSetInput.value) {
             params["dataset"] = dataSetInput.value;
+        }
+        const pageInput = document.getElementById("page");
+        if ("" !== pageInput.value) {
+            params["page"] = pageInput.value;
+        }
+        const birthDateInput = document.getElementById("birthDate");
+        if ("" !== birthDateInput.value) {
+            params["birthDate"] = birthDateInput.value;
         }
 
         const url = "/api/pep?" + new URLSearchParams(params);

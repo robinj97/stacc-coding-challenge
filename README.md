@@ -14,7 +14,7 @@
 > 
 > /api/pep?
 > 
-> Etter ? kan man søke via "name=" & "dataset="
+> Etter ? kan man søke via "name=" & "dataset=" & "page=" & "birthDate="
 
 ## Kommentarer
 > 1. Jeg prøvde å lage ett bedre frontend UI i Vue men møtte på mange problemer angående CORS når jeg sendte GET 
