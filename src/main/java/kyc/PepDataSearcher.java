@@ -33,6 +33,13 @@ public final class PepDataSearcher {
                 )
                 .toList();
     }
+
+    /**
+     * Searches the data by birthDate
+     * @param rows list of rows to search over
+     * @param birthDate the birthdate to search in the format YYYY-MM-DD
+     * @return list of results matching this birthDate
+     */
     public static List<PepDataRow> searchByBirthDate(List<PepDataRow> rows, String birthDate) {
         return rows.stream().filter(row -> row.birthDate().equals(birthDate)).toList();
     }
