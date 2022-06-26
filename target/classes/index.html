@@ -7,7 +7,7 @@
 <body>
     <div>
         <h1>Fill in fields below as you wish to search</h1>
-        <p>You can choose to fill in just one or both fields for more specific searches</p>
+        <p>You can choose to fill in just one, some, or all fields for more specific searches</p>
         <p>Everything is case <strong>insensitive</strong></p>
     </div>
 
@@ -35,23 +35,23 @@
     </div>
 
 <script type="text/javascript">
+    const nameInput = document.getElementById("name");
+    const dataSetInput = document.getElementById("dataset");
+    const pageInput = document.getElementById("page");
+    const birthDateInput = document.getElementById("birthDate");
+    const results = document.getElementById("results");
+
     async function search() {
         const params = {};
-
-        const nameInput = document.getElementById("name");
         if ("" !== nameInput.value) {
             params["name"] = nameInput.value;
         }
-
-        const dataSetInput = document.getElementById("dataset");
         if ("" !== dataSetInput.value) {
             params["dataset"] = dataSetInput.value;
         }
-        const pageInput = document.getElementById("page");
         if ("" !== pageInput.value) {
             params["page"] = pageInput.value;
         }
-        const birthDateInput = document.getElementById("birthDate");
         if ("" !== birthDateInput.value) {
             params["birthDate"] = birthDateInput.value;
         }
@@ -59,7 +59,7 @@
         const url = "/api/pep?" + new URLSearchParams(params);
         const response = await (await fetch(url)).json();
 
-        document.getElementById("results").textContent = JSON.stringify(response, null, 2);
+        results.textContent = JSON.stringify(response, null, 2);
     }
 </script>
 </body>
