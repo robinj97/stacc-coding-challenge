@@ -1,4 +1,4 @@
-# Stacc code challenge 2021
+# Stacc code challenge 2022
 
 ## Oppgavebeskrivelse
 > Jeg har valgt å lage ett API slik som eksempelet på stacc repoen viste.
