@@ -17,7 +17,7 @@ public record PepDataRow(
         String id,
         String schema,
         String name,
-        String aliases,
+        List<String> aliases,
         String birthDate,
         String countries,
         String addresses,
@@ -39,7 +39,7 @@ public record PepDataRow(
                 row[0],
                 row[1],
                 row[2],
-                row[3],
+                List.of(row[3].split(";")),
                 row[4],
                 row[5],
                 row[6],
@@ -82,7 +82,7 @@ public record PepDataRow(
                 .add("id", this.id)
                 .add("schema", this.schema)
                 .add("name", this.name)
-                .add("aliases", this.aliases)
+                .add("aliases", Json.createArrayBuilder(this.aliases).build())
                 .add("birthDate", this.birthDate)
                 .add("countries", this.countries)
                 .add("addresses", this.addresses)
