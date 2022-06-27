@@ -13,16 +13,17 @@ public class PepDataSearchTest {
      * @return List of rows with data.
      */
     private List<PepDataRow> createData() {
-        PepDataRow pep1 = new PepDataRow("123","Person","Robin Jain","RJ",
+        List<String> aliases = List.of("RJ","rob");
+        PepDataRow pep1 = new PepDataRow("123","Person","Robin Jain",aliases,
                 "1997-11-16","Norway","NA","a","none","none",
                 " ",List.of("NO","CIA"),"never","year 1");
-        PepDataRow pep2 = new PepDataRow("234","Person","Knut Arild","RJ",
+        PepDataRow pep2 = new PepDataRow("234","Person","Knut Arild",aliases,
                 "1997-11-16","Norway","NA","a","none","none",
                 " ",List.of("CIA","Stacc"),"never","year 1");
-        PepDataRow pep3 = new PepDataRow("345","Person","Are Ketil","RJ",
+        PepDataRow pep3 = new PepDataRow("345","Person","Are Ketil",aliases,
                 "1997-11-16","Norway","NA","a","none","none",
                 " ",List.of("NO","AXE"),"never","year 1");
-        PepDataRow pep4 = new PepDataRow("1010","Person","robin jain","RJ",
+        PepDataRow pep4 = new PepDataRow("1010","Person","robin jain",aliases,
                 "1997-11-17","Norway","NA","a","none","none",
                 " ",List.of("NO","Stacc"),"never","year 1");
         return List.of(pep1,pep2,pep3,pep4);
